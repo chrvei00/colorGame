@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="colorgame.GameController">
+   <children>
+      <Text layoutX="227.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="programmers colorGame" textAlignment="CENTER">
+         <font>
+            <Font name="Times New Roman Bold Italic" size="43.0" />
+         </font>
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.5134228187919463">
+                     <color>
+                        <Color red="0.5333333611488342" blue="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.0554337240755558" green="0.8633447289466858" blue="0.9210526347160339" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Text>
+      <TextArea layoutX="269.0" layoutY="90.0" prefHeight="92.0" prefWidth="375.0" text="Regler:&#10;- Trykk på den riktige fargeflisen.&#10;- Løs 5 oppgaver med samlet tid 1 minutt.&#10;- Poengsscore blir kalkulert av gjenværende sekunder og antall&#10;riktige klikk i forhold til feil.">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </TextArea>
+      <Button layoutX="430.0" layoutY="210.0" mnemonicParsing="false" text="Start" />
+      <Text fill="RED" layoutX="622.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" text="60" textAlignment="CENTER" wrappingWidth="100.53125">
+         <font>
+            <Font name="Showcard Gothic" size="44.0" />
+         </font>
+      </Text>
+      <Text fill="RED" layoutX="699.0" layoutY="281.0" strokeType="OUTSIDE" strokeWidth="0.0" text="s">
+         <font>
+            <Font name="Symbol" size="24.0" />
+         </font>
+      </Text>
+      <Text fill="#0c8025" layoutX="337.0" layoutY="485.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Highscores:" textAlignment="CENTER">
+         <font>
+            <Font name="Verdana Bold" size="28.0" />
+         </font>
+      </Text>
+      <TextArea layoutX="248.0" layoutY="498.0" prefHeight="191.0" prefWidth="48.0" text="  1.&#10;&#10;  2.&#10;&#10;  3.&#10;&#10;  4.&#10;&#10;  5.">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextArea>
+      <Text layoutX="153.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Runde:" textAlignment="CENTER" wrappingWidth="166.53125">
+         <font>
+            <Font name="Showcard Gothic" size="36.0" />
+         </font>
+      </Text>
+      <Text layoutX="471.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tid:" textAlignment="CENTER" wrappingWidth="166.53125">
+         <font>
+            <Font name="Showcard Gothic" size="36.0" />
+         </font>
+      </Text>
+      <Text fill="RED" layoutX="308.0" layoutY="287.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="100.53125">
+         <font>
+            <Font name="Showcard Gothic" size="44.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>
