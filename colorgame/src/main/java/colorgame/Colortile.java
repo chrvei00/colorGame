@@ -1,8 +1,6 @@
 package colorgame;
 
-import java.util.List;
-
-public class Colortile {
+public class Colortile implements Tile {
 
     private int[] color = new int[3];
     private boolean isCorrect;
