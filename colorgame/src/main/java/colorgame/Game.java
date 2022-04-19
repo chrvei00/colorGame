@@ -2,6 +2,7 @@ package colorgame;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Timer;
 
 public class Game {
@@ -13,20 +14,29 @@ public class Game {
 
     public Game() {
         this.tiles = Game.generateTiles();
+        GameTimer minuteTimer = new GameTimer(60);
         this.roundCounter = 1;
+    }
+
+    public List<Colortile> getTiles() {
+        return tiles;
     }
 
     private static List<Colortile> generateTiles() {
         
-        List<Colortile> tiles = new ArrayList<>();
-        
-        return tiles;
+        List<Colortile> tmpTiles = new ArrayList<>();
+        Random rand = new Random();
+        int k = rand.nextInt(5);
+        Boolean isCorrect;
+        for (int i = 0; i < 5; i++) {
+            isCorrect = (i == k);
+            Colortile tmp = new Colortile(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255), isCorrect);
+            tmpTiles.add(tmp);
+        }
+        return tmpTiles;
     }
 
 
-    public static void main(String[] args) {
-        Colortile t1 = new Colortile(100, 23, 33, true);
-        System.out.println(t1);
+    public static void main(String[] args) throws InterruptedException {
     }
-
 }

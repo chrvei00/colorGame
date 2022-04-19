@@ -21,9 +21,13 @@ public class Colortile {
         return this.toString();
     }
 
+    public Boolean isCorrect() {
+        return this.isCorrect;
+    }
+
     @Override
     public String toString() {
-        return "R: " + this.color[0] + "  | G: " + this.color[1] + "  | B: " + this.color[2];
+        return "[ R: " + this.color[0] + "  | G: " + this.color[1] + "  | B: " + this.color[2] + " || isCorrect: " + isCorrect + " ] ";
     }
 
 }
