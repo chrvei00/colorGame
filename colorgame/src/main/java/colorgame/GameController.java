@@ -2,6 +2,7 @@ package colorgame;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -35,7 +36,17 @@ public class GameController {
     private Rectangle tile4;
     @FXML
     private Rectangle tile5;
+    @FXML
+    private TextArea highScoreTxt1;
+    @FXML
+    private TextArea highScoreTxt2;
     
+    //Initialiser oppstart
+    @FXML
+    public void initialize() {
+        this.updateScoreboard();
+    }
+
     //Initialiser spill
     @FXML
     public void initGame() {
@@ -43,6 +54,7 @@ public class GameController {
         this.enableTiles();
         this.updateTxt();
         this.updateTiles();
+        this.updateScoreboard();
     }
 
     //Event-handlers
@@ -130,6 +142,24 @@ public class GameController {
 
     }
     
+    //Oppdater highScoreListen
+    public void updateScoreboard() {
+        int i = 0;
+        String hs1 = "";
+        String hs2 = "";
+        for (String string : highScoreHandler.getHighScores()) {
+            if (i < 5) {
+                hs1 = hs1 + string + "\n";
+            } else {
+                hs2 = hs2 + string + "\n";
+            }
+            i++;
+        }
+        highScoreTxt1.setText(hs1);
+        highScoreTxt2.setText(hs2);
+
+    }
+
     //Game is finished, clean up
     public void gameFinished() {
         //Set text
@@ -148,6 +178,9 @@ public class GameController {
         tile4.setDisable(true);
         tile5.setFill(Color.RED);
         tile5.setDisable(true);
+        //Save result if top10
+        highScoreHandler.newScore(scoreTxt.getText() + "-" + nameTxtField.getText());
+        this.updateScoreboard();
         //Ready for next game
         startButton.setDisable(false);
         startButton.setText("Play again?");
