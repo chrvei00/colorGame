@@ -1,11 +1,9 @@
 package colorgame;
 
-import java.io.FileNotFoundException;
-
 public interface IFileHandler {
     
-    public void save(String[] strings) throws FileNotFoundException;
+    public void save(String[] strings);
 
-    public String[] load() throws FileNotFoundException;
+    public String[] load();
 
 }

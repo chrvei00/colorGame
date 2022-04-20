@@ -1,21 +1,27 @@
 package colorgame;
 
-public class Colortile implements Tile {
+public class Colortile implements ITile {
 
-    //Declerations
-    private int[] color = new int[3];
-    private boolean isCorrect;
+    //Declerations:
+    private final int[] color = new int[3];
+    private final boolean isCorrect;
 
-    //Constructor
+    //Constructor:
     public Colortile(int r, int g, int b, Boolean isCorrect) {
         this.isCorrect = isCorrect;
-        this.color[0] = r;
-        this.color[1] = g;
-        this.color[2] = b;
+        
+        //Validate and set.
+        if (Colortile.checkRGBValue(r) && Colortile.checkRGBValue(g) && Colortile.checkRGBValue(b)) {
+            this.color[0] = r;
+            this.color[1] = g;
+            this.color[2] = b;
+        } else {
+            throw new IllegalArgumentException("Color not proper format.");
+        }
+
     }
 
     //Getters:
-
     public int[] getColorArray() {
         return this.color;
     }
@@ -24,6 +30,11 @@ public class Colortile implements Tile {
     }
     public Boolean isCorrect() {
         return this.isCorrect;
+    }
+
+    //Validators:
+    private static Boolean checkRGBValue(int value) {
+        return (value <= 255 && value >= 0);
     }
 
     //toString

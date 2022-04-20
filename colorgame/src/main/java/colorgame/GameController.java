@@ -13,7 +13,7 @@ public class GameController {
     //Declarations
     private Game game;
     
-    //Connect til fx:id - navn burde være forklarende
+    //FXML Declerations
     @FXML
     private Button startButton;
     @FXML
@@ -43,15 +43,13 @@ public class GameController {
     @FXML
     private TextArea highScoreTxt2;
     
-    //Initialiser oppstart
-    @FXML
+    //Initialiser controller
     public void initialize() {
         this.updateScoreboard();
     }
 
     //Initialiser spill
-    @FXML
-    public void initGame() {
+    private void initGame() {
         game = new Game();
         this.enableTiles();
         this.updateTxt();
@@ -59,11 +57,12 @@ public class GameController {
         this.updateScoreboard();
     }
 
+
     //Event-handlers
 
-    //  Oppdaterer spill ved event
-    @FXML
+    //  Oppdaterer spill når klikk.
     void updateGame(int clickedTileIndex) {
+
         if (game.isFinished()) {
             this.gameFinished();
         } else {
@@ -71,14 +70,17 @@ public class GameController {
             this.updateTxt();
             this.updateTiles();
         }
+        
     }
 
     //  Handler for startknapp
     @FXML
     void startButtonClick() {
+
         startButton.setDisable(true);
         nameTxtField.setDisable(true);
         this.initGame();
+
     }
     
     //  Handler for klikk på tile 1
@@ -108,7 +110,7 @@ public class GameController {
     }
 
     //Enabling tiles
-    public void enableTiles() {
+    private void enableTiles() {
         tile1.setDisable(false);
         tile2.setDisable(false);
         tile3.setDisable(false);
@@ -117,7 +119,7 @@ public class GameController {
     }
 
     //Oppdatering av txt-felt
-    public void updateTxt() {
+    private void updateTxt() {
         timeTxt.setText(Integer.toString(game.getTime()));
         roundTxt.setText(Integer.toString(game.getRoundCounter()));
         colorTxt.setText(game.findCorrectTile().toString());
@@ -125,7 +127,7 @@ public class GameController {
     }
     
     //Oppdater flisene
-    public void updateTiles() {
+    private void updateTiles() {
         ColorTileIterator it1 = new ColorTileIterator(game.getTiles());
         Colortile tmpTile = it1.next();
         tile1.setFill(Color.rgb(tmpTile.getColorArray()[0], tmpTile.getColorArray()[1], tmpTile.getColorArray()[2]));
@@ -141,30 +143,36 @@ public class GameController {
     }
     
     //Oppdater highScoreListen
-    public void updateScoreboard() {
+    private void updateScoreboard() {
+
         int i = 0;
-        String hs1 = "";
-        String hs2 = "";
+        StringBuilder hs1 = new StringBuilder();
+        StringBuilder hs2 = new StringBuilder();
+
+        //Create two hs.strings one for each textarea.
         for (String string : HighscoreHandler.getHighScores()) {
             if (i < 5) {
-                hs1 = hs1 + string + "\n";
+                hs1.append(string + "\n");
             } else {
-                hs2 = hs2 + string + "\n";
+                hs2.append(string + "\n");
             }
             i++;
         }
-        highScoreTxt1.setText(hs1);
-        highScoreTxt2.setText(hs2);
+
+        highScoreTxt1.setText(hs1.toString());
+        highScoreTxt2.setText(hs2.toString());
 
     }
 
     //Game is finished, clean up
-    public void gameFinished() {
+    private void gameFinished() {
+        
         //Set text
         scoreTxt.setText(Integer.toString(game.getResult()));
         timeTxt.setText(Integer.toString(game.getTime()));
         roundTxt.setText("Fin.");
         colorTxt.setText("Game is finished. Good job!");
+        
         //Set fliser
         tile1.setFill(Color.RED);
         tile1.setDisable(true);
@@ -176,12 +184,16 @@ public class GameController {
         tile4.setDisable(true);
         tile5.setFill(Color.RED);
         tile5.setDisable(true);
+        
         //Save result if top10
         HighscoreHandler.newScore(scoreTxt.getText() + "-" + nameTxtField.getText());
         this.updateScoreboard();
+        
         //Ready for next game
         startButton.setDisable(false);
         startButton.setText("Play again?");
         nameTxtField.setDisable(false);
+    
     }
+
 }

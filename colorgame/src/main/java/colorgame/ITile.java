@@ -1,6 +1,6 @@
 package colorgame;
 
-public interface Tile {
+public interface ITile {
     
     public String getColorString();
     public int[] getColorArray();

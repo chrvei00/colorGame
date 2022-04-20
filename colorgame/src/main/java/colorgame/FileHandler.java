@@ -6,8 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class FileHandler {
+public final class FileHandler {
 
+    //Declearations:
     private static final File file = new File("./colorgame/src/main/resources/colorgame/highscores.txt");
 
     private FileHandler() {
@@ -15,6 +16,7 @@ public class FileHandler {
     
     public static void save(List<String> highScores) {
 
+        //Write every hs as a line in txt document (file)
         try (PrintWriter writer = new PrintWriter(file);) {
             for (String string : highScores) {
                 writer.println(string);
@@ -23,30 +25,25 @@ public class FileHandler {
         } catch (Exception e) {
             System.err.println(e);
         }
+
     }
 
     public static List<String> load() {
         
-        try (Scanner scanner = new Scanner(file);) {
-            List<String> highScores = new ArrayList<>();
+        //Declare arraylist to be returned.
+        List<String> highScores = new ArrayList<>();
 
+        //Read every line of file and add it to arraylist, then return the list.
+        try (Scanner scanner = new Scanner(file);) {
             while (scanner.hasNextLine()) {
                 highScores.add(scanner.nextLine());
             }
-            return highScores;
         } catch (Exception e) {
             System.err.println(e);
         }
 
-        return new ArrayList<>();
-    }
-
-    public static void main(String[] args) {
-        String k = "";
-        for (String string : FileHandler.load()) {
-            k = k + string + "\n";
-        }
-        System.out.println(k);
+        return highScores;
+        
     }
 
 }
