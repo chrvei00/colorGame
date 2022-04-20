@@ -25,6 +25,8 @@ public class GameController {
     @FXML
     private Text colorTxt;
     @FXML
+    private Text ptsTxt;
+    @FXML
     private TextField nameTxtField;
     @FXML
     private Rectangle tile1;
@@ -119,11 +121,7 @@ public class GameController {
         timeTxt.setText(Integer.toString(game.getTime()));
         roundTxt.setText(Integer.toString(game.getRoundCounter()));
         colorTxt.setText(game.findCorrectTile().toString());
-    }
-    
-    //Oppdatering av timer
-    public static void updateTimer() {
-        // TODO
+        ptsTxt.setText(game.getCorrectAnswers());
     }
     
     //Oppdater flisene
@@ -147,7 +145,7 @@ public class GameController {
         int i = 0;
         String hs1 = "";
         String hs2 = "";
-        for (String string : highScoreHandler.getHighScores()) {
+        for (String string : HighscoreHandler.getHighScores()) {
             if (i < 5) {
                 hs1 = hs1 + string + "\n";
             } else {
@@ -179,7 +177,7 @@ public class GameController {
         tile5.setFill(Color.RED);
         tile5.setDisable(true);
         //Save result if top10
-        highScoreHandler.newScore(scoreTxt.getText() + "-" + nameTxtField.getText());
+        HighscoreHandler.newScore(scoreTxt.getText() + "-" + nameTxtField.getText());
         this.updateScoreboard();
         //Ready for next game
         startButton.setDisable(false);

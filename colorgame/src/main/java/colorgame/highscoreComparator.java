@@ -1,10 +1,8 @@
 package colorgame;
 
-import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.List;
 
-public class highscoreComparator implements Comparator<String> {
+public class HighscoreComparator implements Comparator<String> {
 
     @Override
     public int compare(String o1, String o2) {

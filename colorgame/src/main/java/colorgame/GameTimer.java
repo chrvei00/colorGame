@@ -18,7 +18,6 @@ public class GameTimer {
                 ticker.cancel();
             } else {
                 counter--;
-                GameController.updateTimer();
             }
         }
     };
@@ -27,7 +26,7 @@ public class GameTimer {
     public GameTimer(int time) {
         this.counter = time;
         this.stop = false;
-        ticker.scheduleAtFixedRate(tick, 1000, 1000);    
+        ticker.scheduleAtFixedRate(tick, 0, 1000);    
     }
     //Getters
     public int getTime() {

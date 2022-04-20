@@ -32,6 +32,10 @@ public class Game {
         return this.roundCounter;
     }
 
+    public String getCorrectAnswers() {
+        return Integer.toString(correctAnswers);
+    }
+
     public int getResult() {
         return this.result;
     }

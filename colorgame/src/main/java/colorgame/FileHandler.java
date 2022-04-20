@@ -1,7 +1,6 @@
 package colorgame;
 
 import java.io.File;
-import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,14 +14,12 @@ public class FileHandler {
     }
     
     public static void save(List<String> highScores) {
-        try {
-            PrintWriter writer = new PrintWriter(file);
+
+        try (PrintWriter writer = new PrintWriter(file);) {
             for (String string : highScores) {
-                System.out.println(string);
                 writer.println(string);
             }
             writer.flush();
-            writer.close();
         } catch (Exception e) {
             System.err.println(e);
         }
@@ -30,14 +27,12 @@ public class FileHandler {
 
     public static List<String> load() {
         
-        try {
-            Scanner scanner = new Scanner(file);
+        try (Scanner scanner = new Scanner(file);) {
             List<String> highScores = new ArrayList<>();
 
             while (scanner.hasNextLine()) {
                 highScores.add(scanner.nextLine());
             }
-            scanner.close();
             return highScores;
         } catch (Exception e) {
             System.err.println(e);
