@@ -24,7 +24,7 @@ public class ColorTileIterator implements Iterator<Colortile> {
     @Override
     public Colortile next() {
         if (!this.hasNext()) {
-            throw new Error("No more tiles");
+            throw new IndexOutOfBoundsException("No more tiles");
         }
         counter++;
         return tiles.get(counter);

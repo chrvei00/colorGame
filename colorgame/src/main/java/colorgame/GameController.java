@@ -10,7 +10,7 @@ import javafx.scene.text.Text;
 public class GameController {
 
     //Declarations
-    private static Game game;
+    private Game game;
     
     //Connect til fx:id - navn burde være forklarende
     @FXML
@@ -139,15 +139,15 @@ public class GameController {
         colorTxt.setText("Game is finished. Good job!");
         //Set fliser
         tile1.setFill(Color.RED);
-        tile1.setDisable(true);;
+        tile1.setDisable(true);
         tile2.setFill(Color.RED);
         tile2.setDisable(true);
         tile3.setFill(Color.RED);
         tile3.setDisable(true);
         tile4.setFill(Color.RED);
-        tile4.setDisable(true);;
+        tile4.setDisable(true);
         tile5.setFill(Color.RED);
-        tile5.setDisable(true);;
+        tile5.setDisable(true);
         //Ready for next game
         startButton.setDisable(false);
         startButton.setText("Play again?");

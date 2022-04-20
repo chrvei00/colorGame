@@ -13,6 +13,7 @@ public class Game {
     private int roundCounter;
     private int correctAnswers;
     private int result;
+    private static Random rand = new Random();
 
     //Init
     public Game() {
@@ -46,8 +47,7 @@ public class Game {
     public void handler(int clickedTileIndex) {
         this.updateScore(tiles.get(clickedTileIndex).toString().equals(this.findCorrectTile().toString()));
 
-        if (this.isFinished()) {            
-        } else {
+        if (Boolean.FALSE.equals(this.isFinished())) {            
             this.newRound();
         }
     }
@@ -61,7 +61,6 @@ public class Game {
     //  Generate new tiles
     private static List<Colortile> generateTiles() {
         List<Colortile> tmpTiles = new ArrayList<>();
-        Random rand = new Random();
         int k = rand.nextInt(5);
         Boolean isCorrect;
 
@@ -84,12 +83,12 @@ public class Game {
                 }
             }
 
-        throw new Error("Cannot find the correct tile");
+        throw new IllegalArgumentException("Cannot find the correct tile");
     }
 
     //  Update score
     public void updateScore(Boolean answer) {
-        if(answer && this.correctAnswers <= 5) { this.correctAnswers++; }
+        if(Boolean.TRUE.equals(answer) && this.correctAnswers <= 5) { this.correctAnswers++; }
     }
 
     //  Calculate score
