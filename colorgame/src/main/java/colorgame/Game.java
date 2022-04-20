@@ -43,9 +43,8 @@ public class Game {
     //Gamerunninng-methods
 
     //  onClickHandler - main event handler
-    public void handler(Colortile clickedTile) {
-        
-        this.updateScore(clickedTile.toString().equals(this.findCorrectTile().toString()));
+    public void handler(int clickedTileIndex) {
+        this.updateScore(tiles.get(clickedTileIndex).toString().equals(this.findCorrectTile().toString()));
 
         if (this.isFinished()) {            
         } else {
@@ -90,7 +89,7 @@ public class Game {
 
     //  Update score
     public void updateScore(Boolean answer) {
-        if(answer) { this.correctAnswers++; }
+        if(answer && this.correctAnswers <= 5) { this.correctAnswers++; }
     }
 
     //  Calculate score
