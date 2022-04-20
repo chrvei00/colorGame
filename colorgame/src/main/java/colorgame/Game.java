@@ -1,5 +1,6 @@
 package colorgame;
 
+//Imports
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -15,6 +16,7 @@ public class Game {
 
     //Init
     public Game() {
+        this.result = 0;
         this.newRound();
         minuteTimer = new GameTimer(60);
     }
@@ -22,15 +24,19 @@ public class Game {
     
     //Getters:
     public List<Colortile> getTiles() {
-        return tiles;
+        return this.tiles;
     }
 
     public int getRoundCounter() {
-        return roundCounter;
+        return this.roundCounter;
     }
 
     public int getResult() {
-        return result;
+        return this.result;
+    }
+
+    public int getTime() {
+        return this.minuteTimer.getTime();
     }
 
 
@@ -69,7 +75,7 @@ public class Game {
     }
 
     //  Find correct tile
-    private Colortile findCorrectTile() {
+    public Colortile findCorrectTile() {
         Colortile tile;
         ColorTileIterator it1 = new ColorTileIterator(tiles);
             while (it1.hasNext()) {
