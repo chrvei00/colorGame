@@ -9,10 +9,10 @@ import java.util.Scanner;
 public final class FileHandler {
 
     //Declearations:
-    private static final File file = new File("./colorgame/src/main/resources/colorgame/highscores.txt");
+    private static final String relativeFilePath = ("./colorgame/src/main/resources/colorgame/highscores.txt");
+    private static final File file = new File(relativeFilePath);
 
-    private FileHandler() {
-    }
+    private FileHandler() {}
     
     public static void save(List<String> highScores) {
 

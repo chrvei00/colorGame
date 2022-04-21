@@ -44,6 +44,11 @@ public class Game {
     //  onClickHandler - main event handler
     public void handler(int clickedTileIndex) {
 
+        //Validate input
+        if (!(clickedTileIndex <= 4 && clickedTileIndex >= 0)) {
+            throw new IllegalArgumentException("Tile do not exist");
+        }
+
         //Check if tileClicked is correct and send the result to updateScore method.
         this.updateScore(tiles.get(clickedTileIndex).toString().equals(this.findCorrectTile().toString()));
 

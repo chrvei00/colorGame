@@ -8,6 +8,7 @@ public class Colortile implements ITile {
 
     //Constructor:
     public Colortile(int r, int g, int b, Boolean isCorrect) {
+        
         this.isCorrect = isCorrect;
         
         //Validate and set.
