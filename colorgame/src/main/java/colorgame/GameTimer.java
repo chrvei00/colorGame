@@ -19,6 +19,7 @@ public class GameTimer {
                 ticker.cancel();
             } else {
                 counter--;
+                GameController.updateTimer();
             }
         }
     };

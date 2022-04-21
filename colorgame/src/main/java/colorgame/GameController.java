@@ -120,10 +120,14 @@ public class GameController {
 
     //Oppdatering av txt-felt
     private void updateTxt() {
-        timeTxt.setText(Integer.toString(game.getTime()));
         roundTxt.setText(Integer.toString(game.getRoundCounter()));
         colorTxt.setText(game.findCorrectTile().toString());
         ptsTxt.setText(game.getCorrectAnswers());
+    }
+
+    //Oppdatering av timer
+    public static void updateTimer() {
+        GameApp.getController().timeTxt.setText(Integer.toString(GameApp.getController().game.getTime()));
     }
     
     //Oppdater flisene

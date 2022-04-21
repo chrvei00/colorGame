@@ -10,15 +10,23 @@ import javafx.stage.Stage;
 
 public class GameApp extends Application{
 
+    private static GameController controller;
+
     
     @Override
     public void start(Stage stage) throws IOException {
         //Stage setup
         stage.setTitle("Veiby's colorGame");
-        Parent root = FXMLLoader.load(getClass().getResource("Game.fxml"));
+        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("Game.fxml"));
+        Parent root = (Parent) loader.load();
+        controller = loader.getController();
         stage.setScene(new Scene(root));
         //Open stage
         stage.show();        
+    }
+
+    public static GameController getController() {
+        return GameApp.controller;
     }
     
     public static void main(String[] args) {
