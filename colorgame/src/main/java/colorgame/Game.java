@@ -60,7 +60,7 @@ public class Game {
     }
 
     //  Create next round
-    public void newRound() {
+    private void newRound() {
         this.tiles = Game.generateTiles();
         this.roundCounter++;
     }

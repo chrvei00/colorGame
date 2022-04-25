@@ -2,6 +2,9 @@ package colorgame;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -53,7 +56,31 @@ public class GameTest {
     @Test
     public void testGenerateTiles() {
         
+        //Check if generateNewTiles() works
+        List<Colortile> originalTiles = game.getTiles();
+        //  Trigger handler -> triggers newRound() -> triggers generateNewTiles();
+        game.handler(0);
+        //  Assert that the tiles have changed
+        assertTrue(originalTiles != game.getTiles(), "New tiles match the old tiles.");
+
     }
 
+    //  Check isFinished-method
+    @Test
+    public void testIsFinished() {
+        
+        //Set roundcounter = 5 --> means game is finished.
+        assertTrue(!game.isFinished());
+        while (game.getRoundCounter() < 5) {
+            //Check if game thinks it is finished before round = 5
+            assertTrue(!game.isFinished());
+            System.out.println(game.getRoundCounter());
+            game.handler(0);
+        }
+        //Check that isFinished returns true after 5 rounds
+        assertTrue(game.isFinished());
+
+
+    }
 
 }
