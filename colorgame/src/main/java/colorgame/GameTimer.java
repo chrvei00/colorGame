@@ -19,7 +19,11 @@ public class GameTimer {
                 ticker.cancel();
             } else {
                 counter--;
-                GameController.updateTimer();
+                try {
+                    GameController.updateTimer();
+                } catch (Exception e) {
+                    System.out.println("GameController not initialized. Ignore if this is JUnit test.");
+                }
             }
         }
     };

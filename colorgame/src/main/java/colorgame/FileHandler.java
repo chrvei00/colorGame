@@ -6,15 +6,28 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public final class FileHandler {
+public class FileHandler {
 
     //Declearations:
-    private static final String relativeFilePath = ("./colorgame/src/main/resources/colorgame/highscores.txt");
-    private static final File file = new File(relativeFilePath);
+    private static String path = ("./colorgame/src/main/resources/colorgame/highscores.txt");
+    private static File file;
 
     private FileHandler() {}
-    
+
+    //Save with no specified path
     public static void save(List<String> highScores) {
+       FileHandler.save(highScores, FileHandler.path);
+    }
+    
+    //Save with specified path
+    public static void save(List<String> highScores, String path) {
+
+        //Declare file
+        try {
+            file = new File(path);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
 
         //Write every hs as a line in txt document (file)
         try (PrintWriter writer = new PrintWriter(file);) {
@@ -28,8 +41,21 @@ public final class FileHandler {
 
     }
 
+    //Load with no specified path
     public static List<String> load() {
-        
+        return load(FileHandler.path);
+    }
+
+    //Load with specified path
+    public static List<String> load(String path) {
+
+        //Declare file
+        try {
+            file = new File(path);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
         //Declare arraylist to be returned.
         List<String> highScores = new ArrayList<>();
 

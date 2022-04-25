@@ -42,6 +42,13 @@ public final class HighscoreHandler {
 
     //  Validate if score is top10
     private static Boolean checkIfScoreIsTop10(String newScore) {
+
+        try {
+            //Validate input
+            scoreStringValidator(newScore);
+        } catch (Exception e) {
+            throw new IllegalArgumentException("Input is invalid format.");
+        }
         
         //Add and sort the new highscorelist
         tmpScores = new ArrayList<>();

@@ -74,7 +74,6 @@ public class GameTest {
         while (game.getRoundCounter() < 5) {
             //Check if game thinks it is finished before round = 5
             assertTrue(!game.isFinished());
-            System.out.println(game.getRoundCounter());
             game.handler(0);
         }
         //Check that isFinished returns true after 5 rounds
