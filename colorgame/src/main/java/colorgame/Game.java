@@ -70,7 +70,7 @@ public class Game {
 
         List<Colortile> tmpTiles = new ArrayList<>();
         int k = rand.nextInt(5);
-        Boolean isCorrect;
+        boolean isCorrect;
 
         //Generate 5 new tiles and set one of them to correct.
         for (int i = 0; i < 5; i++) {
@@ -102,7 +102,7 @@ public class Game {
     }
 
     //  Update score
-    public void updateScore(Boolean answer) {
+    public void updateScore(boolean answer) {
         //Increase score if answer is correct. And validate not more than max 5 correct answers.
         if( answer && this.correctAnswers <= 5) { this.correctAnswers++; }
     }
@@ -114,7 +114,7 @@ public class Game {
     }
 
     //  Check if game is finished
-    public Boolean isFinished() {
+    public boolean isFinished() {
         
         if (timer.getTime() == 0  || this.roundCounter == 5) {
             this.result = calcScore();

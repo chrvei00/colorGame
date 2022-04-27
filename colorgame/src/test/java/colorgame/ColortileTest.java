@@ -15,7 +15,7 @@ public class ColortileTest {
     private static int g = 100;
     private static int b = 150;
     private static int[] testColorArray = new int[3];
-    private static Boolean isCorrect = false;
+    private static boolean isCorrect = false;
 
 
     //Sjekk om man kan opprette en tile

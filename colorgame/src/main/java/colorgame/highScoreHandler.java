@@ -3,17 +3,22 @@ package colorgame;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class HighscoreHandler {
-
-    //private constructor
-    private HighscoreHandler() {}
+public class HighscoreHandler {
 
     //Declerations
-    private static List<String> highScores = FileHandler.load();
-    private static List<String> tmpScores;
+    private FileHandler fileHandler;
+    private List<String> tmpScores;
+    private List<String> highScores;
+    
+    //private constructor
+    public HighscoreHandler() {
+        this.fileHandler = new FileHandler("./colorgame/src/main/resources/colorgame/highscores.txt");
+        this.highScores = fileHandler.load();
+    }
+
 
     //Handle new scores
-    public static void newScore(String newScore) {
+    public void newScore(String newScore) {
 
         try {
 
@@ -21,9 +26,9 @@ public final class HighscoreHandler {
             HighscoreHandler.scoreStringValidator(newScore);
     
             //Check if HSlist changed, and update file accordingly.
-            if (HighscoreHandler.checkIfScoreIsTop10(newScore)) {
-                highScores = tmpScores;
-                FileHandler.save(highScores);
+            if (this.checkIfScoreIsTop10(newScore)) {
+                this.highScores = this.tmpScores;
+                this.fileHandler.save(this.highScores);
             }
 
         } catch (Exception e) {
@@ -34,37 +39,37 @@ public final class HighscoreHandler {
     }
 
     //Getters
-    public static List<String> getHighScores() {
-        return highScores;
+    public List<String> getHighScores() {
+        return this.highScores;
     }
 
     //Validators:
 
     //  Validate if score is top10
-    private static Boolean checkIfScoreIsTop10(String newScore) {
+    private boolean checkIfScoreIsTop10(String newScore) {
 
         try {
             //Validate input
-            scoreStringValidator(newScore);
+            HighscoreHandler.scoreStringValidator(newScore);
         } catch (Exception e) {
             throw new IllegalArgumentException("Input is invalid format.");
         }
         
         //Add and sort the new highscorelist
-        tmpScores = new ArrayList<>();
-        tmpScores.addAll(highScores);
-        tmpScores.add(newScore);
-        tmpScores.sort(new HighscoreComparator());
+        this.tmpScores = new ArrayList<>();
+        this.tmpScores.addAll(this.getHighScores());
+        this.tmpScores.add(newScore);
+        this.tmpScores.sort(new HighscoreComparator());
 
         //Check if score is top 10, or there are less than 10 highscores
-        if (tmpScores.size() >= 11) {
-            tmpScores.remove(10);
+        if (this.tmpScores.size() >= 11) {
+            this.tmpScores.remove(10);
         } else {
             return true;
         }
         
         //If the score didnt change the list, return false : true.
-        return (!tmpScores.equals(highScores));
+        return (!this.tmpScores.equals(this.highScores));
     }
 
     //  Validate input-score-format

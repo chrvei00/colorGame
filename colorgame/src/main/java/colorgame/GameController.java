@@ -12,6 +12,7 @@ public class GameController {
 
     //Declarations
     private Game game;
+    private HighscoreHandler highscoreHandler;
     
     //FXML Declerations
     @FXML
@@ -45,12 +46,13 @@ public class GameController {
     
     //Initialiser controller
     public void initialize() {
+        this.highscoreHandler = new HighscoreHandler();
         this.updateScoreboard();
     }
 
     //Initialiser spill
     private void initGame() {
-        game = new Game();
+        this.game = new Game();
         this.enableTiles();
         this.updateTxt();
         this.updateTiles();
@@ -61,9 +63,9 @@ public class GameController {
     //Event-handlers
 
     //  Oppdaterer spill når klikk.
-    void updateGame(int clickedTileIndex) {
+    private void updateGame(int clickedTileIndex) {
 
-        if (game.isFinished()) {
+        if (this.game.isFinished()) {
             this.gameFinished();
         } else {
             game.handler(clickedTileIndex);
@@ -75,7 +77,7 @@ public class GameController {
 
     //  Handler for startknapp
     @FXML
-    void startButtonClick() {
+    private void startButtonClick() {
 
         startButton.setDisable(true);
         nameTxtField.setDisable(true);
@@ -85,27 +87,27 @@ public class GameController {
     
     //  Handler for klikk på tile 1
     @FXML
-    void tile1Click() {
+    private void tile1Click() {
         this.updateGame(0);
     }
     //  Handler for klikk på tile 2
     @FXML
-    void tile2Click() {
+    private void tile2Click() {
         this.updateGame(1);
     }    
     //  Handler for klikk på tile 3
     @FXML
-    void tile3Click() {
+    private void tile3Click() {
         this.updateGame(2);
     }    
     //  Handler for klikk på tile 4
     @FXML
-    void tile4Click() {
+    private void tile4Click() {
         this.updateGame(3);
     }    
     //  Handler for klikk på tile 5
     @FXML
-    void tile5Click() {
+    private void tile5Click() {
         this.updateGame(4);
     }
 
@@ -154,7 +156,7 @@ public class GameController {
         StringBuilder hs2 = new StringBuilder();
 
         //Create two hs.strings one for each textarea.
-        for (String string : HighscoreHandler.getHighScores()) {
+        for (String string : highscoreHandler.getHighScores()) {
             if (i < 5) {
                 hs1.append(string + "\n");
             } else {
@@ -190,7 +192,7 @@ public class GameController {
         tile5.setDisable(true);
         
         //Save result if top10
-        HighscoreHandler.newScore(scoreTxt.getText() + "-" + nameTxtField.getText());
+        highscoreHandler.newScore(scoreTxt.getText() + "-" + nameTxtField.getText());
         this.updateScoreboard();
         
         //Ready for next game

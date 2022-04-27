@@ -1,9 +1,11 @@
 package colorgame;
 
+import java.util.List;
+
 public interface IFileHandler {
     
-    public void save(String[] strings);
+    public void save(List<String> input);
 
-    public String[] load();
+    public List<String> load();
 
 }

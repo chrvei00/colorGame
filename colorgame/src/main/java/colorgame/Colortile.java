@@ -7,7 +7,7 @@ public class Colortile implements ITile {
     private final boolean isCorrect;
 
     //Constructor:
-    public Colortile(int r, int g, int b, Boolean isCorrect) {
+    public Colortile(int r, int g, int b, boolean isCorrect) {
         
         this.isCorrect = isCorrect;
         
@@ -29,12 +29,12 @@ public class Colortile implements ITile {
     public String getColorString() {
         return this.toString();
     }
-    public Boolean isCorrect() {
+    public boolean isCorrect() {
         return this.isCorrect;
     }
 
     //Validators:
-    private static Boolean checkRGBValue(int value) {
+    private static boolean checkRGBValue(int value) {
         return (value <= 255 && value >= 0);
     }
 

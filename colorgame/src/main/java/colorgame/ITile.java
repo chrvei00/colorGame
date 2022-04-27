@@ -5,6 +5,6 @@ public interface ITile {
     public String getColorString();
     public int[] getColorArray();
 
-    public Boolean isCorrect();
+    public boolean isCorrect();
 
 }

@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="colorgame.GameController">
+<AnchorPane prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/13" xmlns:fx="http://javafx.com/fxml/1" fx:controller="colorgame.GameController">
    <children>
       <Text layoutX="175.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="programmers colorGame" textAlignment="CENTER">
          <font>
